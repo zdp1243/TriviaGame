@@ -32,8 +32,11 @@ $(document).ready(function() {
     }
   }
 
-  // clearInterval(counter);
-  //  $("#tempis").css({ visibility: "visible", opacity: "1" });
+  clearInterval(counter);
+
+  if (countMin <= 0) {
+    $("#tempis").css({ visibility: "visible", opacity: "1" });
+  }
 
   beginButton.on("click", function() {
     counter = setInterval(runTimer, 1000);
@@ -47,15 +50,71 @@ $(document).ready(function() {
   //When condition met $("#tempis").css ({'visibility':'visible', 'opacity': '1',});
 
   //Function that reads radio button, then tallies correct answers out of 5.
+var radioChecked1;
+var radioChecked2;
+var radioChecked3;
+var radioChecked4;
+var radioChecked5;
 
-  //Display correct guesses out of 5 in HTML.
-
-  //}
-
-  //$(function(){
-  //  $("#submit").click(function(){
-  //      alert($('input:radio:checked').val());
-
-  //  });
-  // });
+    //Check Q1
+  $("#submit").click(function() {
+        console.log("submit");
+    radioChecked1 = $("input [name='answer1']:checked");
+        console.log("radioChecked1");
+        console.log("radioChecked1[0].value");
+    if (radioChecked1[0].value === '2') {
+        console.log("correct1");
+      
+    }
+  
+    //Check Q2
+    $("#submit").click(function() {
+        console.log("submit");
+      radioChecked2 = $("input [name='answer1']:checked");
+        console.log("radioChecked2");
+        console.log("radioChecked2[0].value");
+      if (radioChecked2[0].value === '2') {
+        console.log("correct2");
+        
+      }
+  
+      //Check Q3
+      $("#submit").click(function() {
+          console.log("submit");
+        radioChecked3 = $("input [name='answer1']:checked");
+          console.log("radioChecked3");
+          console.log("radioChecked3[0].value");
+        if (radioChecked3[0].value === '1') {
+          console.log("correct3");
+            
+          }
+      
+      //Check Q4
+        $("#submit").click(function() {
+            console.log("submit");
+        radioChecked4 = $("input [name='answer1']:checked");
+            console.log("radioChecked4");
+            console.log("radioChecked4[0].value");
+        if (radioChecked4[0].value === '1') {
+            console.log("correct4");
+              
+            }
+  
+        //Check Q5
+        $("#submit").click(function() {
+            console.log("submit");
+        radioChecked5 = $("input [name='answer1']:checked");
+            console.log("radioChecked5");
+            console.log("radioChecked5[0].value");
+        if (radioChecked5[0].value === '3') {
+            console.log("correct5");
+                    
+            }   
+                  
+                  
+  // //Display correct guesses out of 5 in HTML.
+  
+  
 });
+  
+
