@@ -1,0 +1,8 @@
+body {
+  background-color: black;
+}
+
+#tempis {
+  visibility: hidden;
+  opacity: 0;
+}
