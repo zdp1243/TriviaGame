@@ -5,10 +5,8 @@ $(document).ready(function() {
   var beginButton = $("#begin");
   var submitButton = $("#submit");
 
-  var correctAnswers = 0;
-
-  var countMin = 2;
-  var countSec = 0;
+  var countMin = 0;
+  var countSec = 20;
   var counter;
 
   //Timer that decrements from 2 minutes.
@@ -25,6 +23,11 @@ $(document).ready(function() {
         $("#timer").html(countMin + ":" + countSec);
       }
       countSec--;
+      if (countMin == 0 && countSec == 0) {
+        clearInterval(counter);
+        console.log("game stopped");
+        $("#tempis").css({ visibility: "visible", opacity: "1" });
+      }
       if (countSec < 0) {
         countSec = 59;
         countMin--;
@@ -35,9 +38,7 @@ $(document).ready(function() {
   clearInterval(counter);
 
   //If timer runs out #tempis message should become visible. Need to define counter or timer I think, instead of clearInterval.
-  if (clearInterval) {
-    $("#tempis").css({ visibility: "visible", opacity: "1" });
-  }
+  //  if (time runs out) {
 
   beginButton.on("click", function() {
     counter = setInterval(runTimer, 1000);
@@ -45,93 +46,88 @@ $(document).ready(function() {
     console.log("hello");
   });
 
-  //Timer resets when Begin Quiz button is pushed.
+  // Timer resets when Begin Quiz button is pushed.
 
-  //When timer reaches 0sec, #tempis alert becomes visible. Does it need a delay?
-  //When condition met $("#tempis").css ({'visibility':'visible', 'opacity': '1',});
+  //  When timer reaches 0sec, #tempis alert becomes visible. Does it need a delay?
+  //  When condition met $("#tempis").css ({'visibility':'visible', 'opacity': '1',});
 
-  //Function that reads radio button, then tallies correct answers out of 5.
-var radioChecked1;
-var radioChecked2;
-var radioChecked3;
-var radioChecked4;
-var radioChecked5;
-var scorePoint=0
+  //  Function that reads radio button, then tallies correct answers out of 5.
+  var radioChecked1;
+  var radioChecked2;
+  var radioChecked3;
+  var radioChecked4;
+  var radioChecked5;
+  var scorePoint = 0;
 
-    //Check Q1
+  //Check Q1
   $("#submit").click(function() {
-        console.log("submit");
+    console.log("submit");
     radioChecked1 = $("input [name='answer1']:checked");
-        console.log("radioChecked1");
-        console.log("radioChecked1[0].value");
-    if (radioChecked1[0].value === '2') {
-        console.log("correct1");
-      function score(){
-          scorePoint++ ;
+    console.log(radioChecked1);
+    console.log(radioChecked1[0].value);
+    if (radioChecked1[0].value === "2") {
+      console.log("correct1");
+      function score() {
+        scorePoint++;
       }
     }
-  
-    //Check Q2
-    $("#submit").click(function() {
-        console.log("submit");
-      radioChecked2 = $("input [name='answer2']:checked");
-        console.log("radioChecked2");
-        console.log("radioChecked2[0].value");
-      if (radioChecked2[0].value === '2') {
-        console.log("correct2");
-        function score(){
-            scorePoint++ ;
-        }
-        
-      }
-  
-      //Check Q3
-      $("#submit").click(function() {
-          console.log("submit");
-        radioChecked3 = $("input [name='answer3']:checked");
-          console.log("radioChecked3");
-          console.log("radioChecked3[0].value");
-        if (radioChecked3[0].value === '1') {
-          console.log("correct3");
-          function score(){
-            scorePoint++ ;
-        }  
-     }
-      
-      //Check Q4
-        $("#submit").click(function() {
-            console.log("submit");
-        radioChecked4 = $("input [name='answer4']:checked");
-            console.log("radioChecked4");
-            console.log("radioChecked4[0].value");
-        if (radioChecked4[0].value === '1') {
-            console.log("correct4");
-            function score(){
-                scorePoint++ ;
-            }
-              
-         }
-  
-        //Check Q5
-        $("#submit").click(function() {
-            console.log("submit");
-        radioChecked5 = $("input [name='answer5']:checked");
-            console.log("radioChecked5");
-            console.log("radioChecked5[0].value");
-        if (radioChecked5[0].value === '3') {
-            console.log("correct5");
-            function score(){
-                scorePoint++ ;
-                //Display correct guesses out of 5 in HTML.
-                $("#score").text(scorePoint + "out of 10");
-            }
-                    
-        }   
-                  
-                  
-  
-  
-  
-});
-  
+  });
 
+  //Check Q2
+  $("#submit").click(function() {
+    console.log("submit");
+    radioChecked2 = $("input [name='answer2']:checked");
+    console.log("radioChecked2");
+    console.log("radioChecked2[0].value");
+    if (radioChecked2[0].value === "2") {
+      console.log("correct2");
+      function score() {
+        scorePoint++;
+      }
+    }
+  });
+
+  //Check Q3
+  $("#submit").click(function() {
+    console.log("submit");
+    radioChecked3 = $("input [name='answer3']:checked");
+    console.log("radioChecked3");
+    console.log("radioChecked3[0].value");
+    if (radioChecked3[0].value === "1") {
+      console.log("correct3");
+      function score() {
+        scorePoint++;
+      }
+    }
+  });
+
+  //Check Q4
+  $("#submit").click(function() {
+    console.log("submit");
+    radioChecked4 = $("input [name='answer4']:checked");
+    console.log("radioChecked4");
+    console.log("radioChecked4[0].value");
+    if (radioChecked4[0].value === "1") {
+      console.log("correct4");
+      function score() {
+        scorePoint++;
+      }
+    }
+  });
+
+  //Check Q5
+  $("#submit").click(function() {
+    console.log("submit");
+    radioChecked5 = $("input [name='answer5']:checked");
+    console.log("radioChecked5");
+    console.log("radioChecked5[0].value");
+    if (radioChecked5[0].value === "3") {
+      console.log("correct5");
+      function score() {
+        scorePoint++;
+      }
+      //Display correct guesses out of 5 in HTML. //Do I need this for every question?
+      $("#score").append(scorePoint + "out of 10");
+    }
+  });
+});
