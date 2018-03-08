@@ -5,8 +5,8 @@ $(document).ready(function() {
   var beginButton = $("#begin");
   var submitButton = $("#submit");
 
-  var countMin = 0;
-  var countSec = 20;
+  var countMin = 2;
+  var countSec = 0;
   var counter;
 
   //Timer that decrements from 2 minutes.
@@ -17,25 +17,24 @@ $(document).ready(function() {
     console.log("hi");
 
     if (countMin >= 0 && countSec >= 0) {
+      if (countMin == 0 && countSec == 0) {
+        clearInterval(counter);
+        console.log("game stopped");
+        $("#tempis").css({ visibility: "visible", opacity: "1" });
+      }
       if (countSec < 10) {
         $("#timer").html(countMin + ":0" + countSec);
       } else {
         $("#timer").html(countMin + ":" + countSec);
       }
       countSec--;
-      if (countMin == 0 && countSec == 0) {
-        clearInterval(counter);
-        console.log("game stopped");
-        $("#tempis").css({ visibility: "visible", opacity: "1" });
-      }
+
       if (countSec < 0) {
         countSec = 59;
         countMin--;
       }
     }
   }
-
-  clearInterval(counter);
 
   //If timer runs out #tempis message should become visible. Need to define counter or timer I think, instead of clearInterval.
   //  if (time runs out) {
@@ -60,74 +59,79 @@ $(document).ready(function() {
   var scorePoint = 0;
 
   //Check Q1
-  $("#submit").click(function() {
+  $("input[name='answer1']").click(function() {
     console.log("submit");
-    radioChecked1 = $("input [name='answer1']:checked");
+    // radioChecked1 = $("input [name='answer1']:checked");
+    radioChecked1 = $(this).attr("value");
+    radioChecked1 = parseInt(radioChecked1);
     console.log(radioChecked1);
-    console.log(radioChecked1[0].value);
-    if (radioChecked1[0].value === "2") {
+    if (radioChecked1 === 2) {
       console.log("correct1");
-      function score() {
-        scorePoint++;
-      }
+      scorePoint++;
     }
+    // Here for testing purposes for now
+    //  $("#score").append(scorePoint + " out of 5");
   });
 
   //Check Q2
-  $("#submit").click(function() {
+  $("input[name='answer2']").click(function() {
     console.log("submit");
-    radioChecked2 = $("input [name='answer2']:checked");
-    console.log("radioChecked2");
-    console.log("radioChecked2[0].value");
-    if (radioChecked2[0].value === "2") {
+    // radioChecked2 = $("input [name='answer2']:checked");
+    radioChecked2 = $(this).attr("value");
+    radioChecked2 = parseInt(radioChecked2);
+    console.log(radioChecked1);
+    if (radioChecked2 === 2) {
       console.log("correct2");
-      function score() {
-        scorePoint++;
-      }
+      scorePoint++;
     }
+    // Here for testing purposes for now
+    //  $("#score").append(scorePoint + " out of 5");
   });
 
   //Check Q3
-  $("#submit").click(function() {
+
+  $("input[name='answer3']").click(function() {
     console.log("submit");
-    radioChecked3 = $("input [name='answer3']:checked");
-    console.log("radioChecked3");
-    console.log("radioChecked3[0].value");
-    if (radioChecked3[0].value === "1") {
+    // radioChecked3 = $("input [name='answer3']:checked");
+    radioChecked3 = $(this).attr("value");
+    radioChecked3 = parseInt(radioChecked3);
+    console.log(radioChecked3);
+    if (radioChecked3 === 1) {
       console.log("correct3");
-      function score() {
-        scorePoint++;
-      }
+      scorePoint++;
     }
+    // Here for testing purposes for now
+    //  $("#score").append(scorePoint + " out of 5");
   });
 
   //Check Q4
-  $("#submit").click(function() {
+  $("input[name='answer4']").click(function() {
     console.log("submit");
-    radioChecked4 = $("input [name='answer4']:checked");
-    console.log("radioChecked4");
-    console.log("radioChecked4[0].value");
-    if (radioChecked4[0].value === "1") {
+    // radioChecked4 = $("input [name='answer1']:checked");
+    radioChecked4 = $(this).attr("value");
+    radioChecked4 = parseInt(radioChecked4);
+    console.log(radioChecked4);
+    if (radioChecked4 === 1) {
       console.log("correct4");
-      function score() {
-        scorePoint++;
-      }
+      scorePoint++;
     }
+    // Here for testing purposes for now
+    //   $("#score").append(scorePoint + " out of 5");
   });
 
   //Check Q5
-  $("#submit").click(function() {
+  $("input[name='answer5']").click(function() {
     console.log("submit");
-    radioChecked5 = $("input [name='answer5']:checked");
-    console.log("radioChecked5");
-    console.log("radioChecked5[0].value");
-    if (radioChecked5[0].value === "3") {
+    // radioChecked5 = $("input [name='answer1']:checked");
+    radioChecked5 = $(this).attr("value");
+    radioChecked5 = parseInt(radioChecked5);
+    console.log(radioChecked5);
+    if (radioChecked5 === 3) {
       console.log("correct5");
-      function score() {
-        scorePoint++;
-      }
-      //Display correct guesses out of 5 in HTML. //Do I need this for every question?
-      $("#score").append(scorePoint + "out of 10");
+      scorePoint++;
     }
+
+    //Display correct guesses out of 5 in HTML. //Do I need this for every question?
+    $("#score").append(scorePoint + " out of 5");
   });
 });
