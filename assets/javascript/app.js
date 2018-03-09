@@ -132,6 +132,6 @@ $(document).ready(function() {
     }
 
     //Display correct guesses out of 5 in HTML. //Do I need this for every question?
-    $("#score").append(scorePoint + " out of 5");
+    $("#score").append(scorePoint + "  out of 5");
   });
 });

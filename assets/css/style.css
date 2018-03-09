@@ -1,8 +1,13 @@
 body {
   background-color: black;
+  /*background-image: url("../assets/images/Books2.jpg");*/
 }
 
 #tempis {
   visibility: hidden;
   opacity: 0;
+}
+
+.lead {
+  font-weight: bold;
 }
